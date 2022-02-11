@@ -140,13 +140,24 @@ const addActors = (data_movie) => {
 const getMoviesFromActor = (data_movie) => {
     let movies = [];
 
-    // Añadir el códgio ....
+    // código añadido por Mar 
+actors.forEach(element => {
+    if(element.actors.includes(data_movie.req.value)){
+        movies.push(element.id);
+    }
+});
 
-    
+if (movies.length <= 0){
+    throw new Error("Actor no encontrado");
+}
+    movies.forEach(element => {
+        element.actors = actorsModel.getActorsById(element.id).actors;
+
+});
     data_movie.res = movies;
 
-};
-
+}
+ 
 export default {
     getAllMovies,
     getMovieById,
