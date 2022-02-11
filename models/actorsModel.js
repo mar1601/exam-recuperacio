@@ -32,10 +32,14 @@ class ActorsModel {
     }
 
     addActorToMovie(req) {
-        
-        // Añadir el códgio ....
-        
-
+       
+        //código modificado por Mar
+        const actor = this.addActorToMovie(req.actors);
+        if (typeof actor != 'undefined') {
+            this.removeActors(req.id);
+            this.addActorToMovie(req);
+        }
+        return actor;
     }
 
     updateActors(req) {
@@ -50,11 +54,11 @@ class ActorsModel {
     getIDFromActor(req) {
         let movies=[];
 
-       // Añadir el códgio ....
-      
-
-        return movies;
-    }
+        //código modificado por Mar 
+         return this.id.find(element=> element.actor== actor);
+         return movies;
+        
+        }
 
 }
 
